@@ -38,9 +38,7 @@ app.patch("/agencies/:id", (req, res) => {
   const UpdateAgency = agencies.find((agency) => agency.id == param.id);
 
   for (const [key, value] of Object.entries(UpdateAgency)) {
-    UpdateAgency[key] = !body[key]
-      ? (UpdateAgency[key] = value)
-      : (UpdateAgency[key] = body[key]);
+    UpdateAgency[key] = !body[key] ? value : body[key];
   }
 
   res.status(200).json(UpdateAgency);
