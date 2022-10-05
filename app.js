@@ -34,16 +34,15 @@ app.get("/agencies/:id", (req, res) => {
 app.patch("/agencies/:id", (req, res) => {
   const param = req.params;
   const body = req.body;
-  console.log("patch body", body, param);
+
   const UpdateAgency = agencies.find((agency) => agency.id == param.id);
-  //   const differentValues = Object.agencies(UpdateAgency);
-  console.log("UpdateAgency before", UpdateAgency);
+
   for (const [key, value] of Object.entries(UpdateAgency)) {
     UpdateAgency[key] = !body[key]
       ? (UpdateAgency[key] = value)
       : (UpdateAgency[key] = body[key]);
   }
-  console.log("UpdateAgency after", UpdateAgency);
+
   res.status(200).json(UpdateAgency);
 });
 
