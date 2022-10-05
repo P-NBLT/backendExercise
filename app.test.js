@@ -35,7 +35,7 @@ test("Read agency at the id: index of the agencies array", async () => {
   const random = Math.floor(Math.random() * 3);
   const id = agencies[random].id;
   const agency = agencies.find((agency) => agency.id == id);
-  const response = await await testApp.get(`/agencies/${id}`);
+  const response = await testApp.get(`/agencies/${id}`);
 
   expect(response.status).toEqual(200);
   expect(response.body).toEqual(agency);
@@ -46,8 +46,6 @@ test("Modify agency at the id: index of the agencies array", async () => {
   const path = "/agencies/2";
 
   const response = await testApp.patch(path).send(modifiedAgency);
-
-  console.log(response.body);
 
   expect(response.status).toBe(200);
   expect(response.body).toEqual(modifiedAgency);
